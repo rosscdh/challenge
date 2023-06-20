@@ -28,10 +28,10 @@ push:
 	docker push ${VERSION}
 
 theme:
-	git clone -d 1 https://github.com/StefMa/hugo-fresh ./themes/hugo-fresh
-	git clone -d 1 https://github.com/jgthms/bulma ./themes/bulma
-
-tf-init:
+	git clone --depth 1 https://github.com/StefMa/hugo-fresh ./themes/hugo-fresh
+	git clone --depth 1 https://github.com/jgthms/bulma ./themes/bulma
+epth
+epthtf-init:
 	sed -i.bak "s/profile.*/profile = \"${AWS_PROFILE}\"/g" terraform/overlays/demo/providers.tf
 	pushd terraform/overlays/demo;terraform init;popd
 tf-validate:
