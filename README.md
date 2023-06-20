@@ -26,9 +26,9 @@ make deploy                         # deploy to the configured s3 bucket and flu
 3. disabled logging (normally would enable it or make use of a system like umami for cookieless tracking)
 4. `Makefile` - I use make or "`just`" (https://github.com/casey/just) to integrate with build tooling. This pattern allows developers to execute the same sequences locally as the pipeline would and allows for simpler debugging in any POSIX complient environment.
 5. you can then setup a `gitlab-ci.yml` or `Jenkinsfile` or whatever `ci` tool you use to build, and can then trigger whatever `cd` tooling is in use (argocd,harness,spinnacker,etc)
-6. as noted in the `providers.tf` state must ALWAYS be stored in a remote s3 bucket thats encrypted at rest, however for the purposes of this demo an exception is made.
+6. as noted in the `providers.tf` terraform state must `ALWAYS` be stored in a remote s3 bucket thats encrypted at rest, however for the purposes of this demo an exception is made and the terraform.state* file is `.gitignored`
 7. I would normally also automate the CDN_ID and BUCKET_NAME in the `config.yaml` by using `jq` to parse the terraform outputs and `sed` to replace values in `config.yaml:deployment.targets[0]`
-8. I have added trivy and terraform validate as basic sanity checks, but would also add a degree of governance using `conftest` (OPA) or similar
+8. I have added trivy and terraform validate as basic sanity checks, but would also add a degree of governance using `conftest` (OPA https://www.conftest.dev/) or similar based on policy which would be pulled from a centralised managed repo.
 
 
 ## Rationale and Other options
