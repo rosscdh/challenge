@@ -8,7 +8,7 @@ I will take it down soon(ish).
 
 ## Usage
 
-Edit the `config.yaml` file to your hearts content (remember to update the `bucket name` and `cloudFrontDistributionID`) (see note 7) and then:
+Edit the `config.yaml` file to your hearts content (remember to update the `bucket name` and `cloudFrontDistributionID` after running terraform and setting the profile var in `providers.tf`) (see note 7) and then:
 
 ```
 make setup                          # install (using brew sorry) the required cli tooling
