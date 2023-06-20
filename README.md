@@ -6,6 +6,9 @@ The deployment behind cloudfront can be found at https://demo.di.works/
 
 I will take it down soon(ish).
 
+`@NB` please remember if you clone this to /tmp/ docker will probably not mount files due to permissions.
+
+
 ## Usage
 
 Edit the `config.yaml` file to your hearts content (remember to update the `bucket name` and `cloudFrontDistributionID` in `config.yaml` (see note 7) and then:
