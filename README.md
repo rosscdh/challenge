@@ -35,7 +35,7 @@ make validate-images                # validate all the images in use
 
 ## Rationale and Other options
 
-As there was no specific deployment target provided I selected hugo (JAMStack and simple s3 cdn), I try to stick with cost effective and performant options relative to the business case.
+As there was no specific deployment target required in the brief, I selected hugo (JAMStack and simple s3 cdn). I generally try to stick with cost effective and performant options relative to the business case.
 
 Ideally I prefer containerized applicatons, however there was no need for a full blown container as the specification was simple html.
 
