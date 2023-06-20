@@ -25,7 +25,7 @@ make run-prod                       # run the production image with caddy
 ## Notes
 
 1. made use of cloudposse s3 cloudfront modules. Abstracted via the overlay which allows us to change to another provider if necessary
-2. acm best uses us-east-1 thus need to provide multiple providers vai tf aliases
+2. acm best uses us-east-1 thus need to provide multiple providers via tf aliases
 3. disabled logging (normally would enable it or make use of a system like umami for cookieless tracking)
 4. `Makefile` - I use make or "`just`" (https://github.com/casey/just) to integrate with build tooling. This pattern allows developers to execute the same sequences locally as the pipeline would and allows for simpler debugging in any POSIX complient environment.
 5. you can then setup a `gitlab-ci.yml` or `Jenkinsfile` or whatever `ci` tool you use to build, and can then trigger whatever `cd` tooling is in use (argocd,harness,spinnacker,etc)
