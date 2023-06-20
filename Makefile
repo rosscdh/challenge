@@ -40,6 +40,9 @@ tf-apply: tf-validate
 run:
 	docker run --rm -it -v ${PWD}:/src -p 1313:1313 --entrypoint hugo jakejarvis/hugo-extended server --bind 0.0.0.0 --config /src/config.yaml
 
+run-prod:
+	docker run --rm -it -v ${PWD}/Caddyfile:/etc/caddy/Caddyfile -e CADDY_HOST='http://0.0.0.0' -p 8080:80 ${VERSION}
+
 generate:
 	docker run --rm -it -v ${PWD}:/src --entrypoint hugo jakejarvis/hugo-extended --config /src/config.yaml
 

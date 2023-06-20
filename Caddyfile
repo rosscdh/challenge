@@ -1,4 +1,4 @@
-{$CADDY_HOST}
+*:80
 
 encode gzip zstd
 

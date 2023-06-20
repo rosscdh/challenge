@@ -18,6 +18,7 @@ make generate                       # generate html for local review
 make run                            # run the setup locally open http://localhost:1313
 make deploy                         # deploy to the configured s3 bucket and flush cdn
 make validate-images                # validate all the images in use
+make run-prod                       # run the production image with caddy
 ```
 
 ## Notes
