@@ -41,9 +41,9 @@ tf-plan: tf-validate
 tf-apply: tf-validate
 	pushd terraform/overlays/demo;terraform apply;popd
 
-# update-config:
-# 	CF_ID=`cat terraform/overlays/demo/terraform.tfstate | jq -rc '.outputs.cloudfront_id.value'` yq e ".deployment.targets[0].cloudFrontDistributionID = strenv(CF_ID)" config.yaml
-# 	S3_BUCKET=`cat terraform/overlays/demo/terraform.tfstate | jq -rc '.outputs.s3_bucket.value'` yq e ".deployment.targets[0].url = strenv(S3_BUCKET)" config.yaml
+show-config:
+	@pushd terraform/overlays/demo> /dev/null;terraform show -json | jq -rc '.values.outputs.cloudfront_id.value';popd> /dev/null
+	@pushd terraform/overlays/demo> /dev/null;terraform show -json | jq -rc '.values.outputs.s3_bucket.value';popd> /dev/null
 
 run:
 	docker run --rm -it -v ${PWD}:/src -p 1313:1313 --entrypoint hugo jakejarvis/hugo-extended server --bind 0.0.0.0 --config /src/config.yaml
