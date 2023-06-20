@@ -28,8 +28,8 @@ push:
 	docker push ${VERSION}
 
 theme:
-	git clone --depth 1 https://github.com/StefMa/hugo-fresh ./themes/hugo-fresh
-	git clone --depth 1 https://github.com/jgthms/bulma ./themes/bulma
+	git clone --depth 1 https://github.com/StefMa/hugo-fresh ./themes/hugo-fresh | true
+	git clone --depth 1 https://github.com/jgthms/bulma ./themes/github.com/jgthms/bulma | true
 
 tf-init:
 	sed -i.bak "s/profile.*/profile = \"${AWS_PROFILE}\"/g" terraform/overlays/demo/providers.tf
@@ -41,9 +41,9 @@ tf-plan: tf-validate
 tf-apply: tf-validate
 	pushd terraform/overlays/demo;terraform apply;popd
 
-update-config:
-	CF_ID=`cat terraform/overlays/demo/terraform.tfstate | jq -rc '.outputs.cloudfront_id.value'` yq e ".deployment.targets[0].cloudFrontDistributionID = strenv(CF_ID)" config.yaml
-	S3_BUCKET=`cat terraform/overlays/demo/terraform.tfstate | jq -rc '.outputs.s3_bucket.value'` yq e ".deployment.targets[0].url = strenv(S3_BUCKET)" config.yaml
+# update-config:
+# 	CF_ID=`cat terraform/overlays/demo/terraform.tfstate | jq -rc '.outputs.cloudfront_id.value'` yq e ".deployment.targets[0].cloudFrontDistributionID = strenv(CF_ID)" config.yaml
+# 	S3_BUCKET=`cat terraform/overlays/demo/terraform.tfstate | jq -rc '.outputs.s3_bucket.value'` yq e ".deployment.targets[0].url = strenv(S3_BUCKET)" config.yaml
 
 run:
 	docker run --rm -it -v ${PWD}:/src -p 1313:1313 --entrypoint hugo jakejarvis/hugo-extended server --bind 0.0.0.0 --config /src/config.yaml
