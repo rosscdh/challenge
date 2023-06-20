@@ -11,14 +11,14 @@ export
 
 all: build tf-init
 
-validate-images:
-	trivy image --quiet --severity CRITICAL ${VERSION}
-	trivy image --quiet --severity CRITICAL ${LATEST}
-	trivy image --quiet --severity CRITICAL jakejarvis/hugo-extended
-
 build:
 	docker build -t ${LATEST} -t ${VERSION} .
 	trivy image --quiet --severity CRITICAL ${VERSION}
+
+validate-images: build
+	trivy image --quiet --severity CRITICAL ${VERSION}
+	trivy image --quiet --severity CRITICAL ${LATEST}
+	trivy image --quiet --severity CRITICAL jakejarvis/hugo-extended
 
 push:
 	docker push ${LATEST}
