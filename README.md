@@ -17,6 +17,7 @@ make tf-init tf-plan tf-apply       # setup terraform uses your "default" profil
 make generate                       # generate html for local review
 make run                            # run the setup locally open http://localhost:1313
 make deploy                         # deploy to the configured s3 bucket and flush cdn
+make validate-images                # validate all the images in use
 ```
 
 ## Notes
