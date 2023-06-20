@@ -4,7 +4,7 @@ uvicorn mailer:app --reload
 import os
 from typing import List
 
-from fastapi import BackgroundTasks, FastAPI
+from fastapi import FastAPI
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema, MessageType
 from pydantic import BaseModel, EmailStr
 from starlette.responses import JSONResponse
