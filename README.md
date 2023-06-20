@@ -11,6 +11,7 @@ I will take it down soon(ish).
 Edit the `config.yaml` file to your hearts content (remember to update the `bucket name` and `cloudFrontDistributionID`) (see note 7) and then:
 
 ```
+make setup                          # install (using brew sorry) the required cli tooling
 make theme                          # to get the hugo-fresh theme
 make build                          # build the base image (not strictly necessary for the static site but evidence for containerization)
 make tf-init tf-plan tf-apply       # setup terraform uses your "default" profile but can be overrident in `terraform/overlays/demo/providers.tf`

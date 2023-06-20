@@ -1,4 +1,4 @@
-.PHONY: all build push run deploy
+.PHONY: all setup build push run deploy
 
 DOMAIN      := demo.di.works
 AWS_PROFILE := default
@@ -10,6 +10,9 @@ LATEST   	:= ${NAME}:latest
 export
 
 all: build tf-init
+
+setup:
+	brew install trivy jq skaffold terraform conftest
 
 build:
 	docker build -t ${LATEST} -t ${VERSION} .
