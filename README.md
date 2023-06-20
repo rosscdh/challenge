@@ -8,16 +8,16 @@ I will take it down soon(ish).
 
 ## Usage
 
-Edit the `config.yaml` file to your hearts content (remember to update the `bucket name` and `cloudFrontDistributionID` in `config.yaml` and the `Makefile` after running terraform and setting the profile var in `providers.tf`) (see note 7) and then:
+Edit the `config.yaml` file to your hearts content (remember to update the `bucket name` and `cloudFrontDistributionID` in `config.yaml` (see note 7) and then:
 
 ```
 make setup                          # install (using brew sorry) the required cli tooling
 make theme                          # to get the hugo-fresh theme
 make build                          # build the base image (not strictly necessary for the static site but evidence for containerization)
-make tf-init tf-plan tf-apply       # setup terraform uses your "default" profile but can be overrident in `terraform/overlays/demo/providers.tf`
+make tf-init tf-plan tf-apply       # setup terraform - tf-init will set the alias profile (in `terraform/overlays/demo/providers.tf`) to be the AWS_PROFILE defined in the Makefile
 make generate                       # generate html for local review
 make run                            # run the setup locally open http://localhost:1313
-make deploy                         # deploy to the configured s3 bucket and flush cdn
+make deploy                         # deploy to the configured s3 bucket and flush cdn - will use AWS_PROFILE and mounted aws creds
 make validate-images                # validate all the images in use
 make run-prod                       # run the production image with caddy
 ```

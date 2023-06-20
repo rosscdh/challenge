@@ -32,6 +32,7 @@ theme:
 	git clone https://github.com/jgthms/bulma ./themes/bulma
 
 tf-init:
+	sed -i.bak "s/profile.*/profile = \"${AWS_PROFILE}\"/g" terraform/overlays/demo/providers.tf
 	pushd terraform/overlays/demo;terraform init;popd
 tf-validate:
 	pushd terraform/overlays/demo;terraform validate;popd

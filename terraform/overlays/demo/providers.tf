@@ -4,7 +4,7 @@ terraform {
 #     bucket                      = "001-di-works-terraform-state"
 #     key                         = "rosscdh/devops-challenge/terraform.tfstate"
 #     region                      = "ap-southeast-2"
-#     profile                     = "SHARED"
+#     profile = "default"
 #     skip_metadata_api_check     = true
 #     skip_region_validation      = true
 #     skip_credentials_validation = true

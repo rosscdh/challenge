@@ -7,3 +7,4 @@ __pycache__/*
 .terraform
 .DS_Store
 .hugo_build.lock
+.bak
