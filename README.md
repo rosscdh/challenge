@@ -31,6 +31,7 @@ make validate-images                # validate all the images in use
 7. I would normally also automate the CDN_ID and BUCKET_NAME in the `config.yaml` by using `jq` to parse the terraform outputs and `sed` to replace values in `config.yaml:deployment.targets[0]`
 8. I have added trivy and terraform validate as basic sanity checks, but would also add a degree of governance using `conftest` (OPA https://www.conftest.dev/) or similar based on policy which would be pulled from a centralised managed repo.
 9. of course a `terraform.lock` would be used in pipelines
+10. trivy evaluates only CRITICAL for this demo, as usually thats the high-water mark where action needs to take place and tickets generated
 
 ## Rationale and Other options
 
