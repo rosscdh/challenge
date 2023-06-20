@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: di-works
+  name: di-works
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: di-works
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: di-works
+    spec:
+      containers:
+      - image: rosscdh/di-works:latest
+        name: di-works
+        ports:
+        - containerPort: 8080
+          name: web
+          protocol: TCP
+        envFrom:
+          - configMapRef:
+              name: di-works-cm
+      - image: rosscdh/di-works-mailer:latest
+        name: mailer
+        ports:
+        - containerPort: 8000
+          name: api
+          protocol: TCP
+        envFrom:
+          - configMapRef:
+              name: di-works-cm

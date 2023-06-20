@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: di-works
+  name: di-works
+spec:
+  type: ClusterIP
+  ports:
+  - name: web
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: di-works
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: di-works
+  name: di-works-mailer
+spec:
+  type: ClusterIP
+  ports:
+  - name: api
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: di-works

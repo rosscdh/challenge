@@ -1,0 +1,7 @@
+{$CADDY_HOST}
+
+encode gzip zstd
+
+root * /var/www/hypercare
+
+file_server

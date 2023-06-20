@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: default
+
+resources:
+- ../../base
+- ingress.yaml
+
+
+images:
+  - name: rosscdh/personal-di-works
+    newTag: "95ff187"
+  - name: rosscdh/personal-di-works-mailer
+    newTag: "95ff187"
+
+configMapGenerator:
+  - name: personal-di-works-cm
+    literals:
+    - CADDY_HOST=http://di.works:8080
+    - MAIL_SERVER=sci-mailhog.default.svc

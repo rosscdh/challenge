@@ -1,0 +1,9 @@
+themes/*
+public/*
+resources/*
+venv/*
+terraform.tfstate*
+__pycache__/*
+.terraform
+.DS_Store
+.hugo_build.lock

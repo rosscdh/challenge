@@ -1,0 +1,32 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+
+build:
+  tagPolicy:
+    customTemplate:
+      template: "{{.COMMIT_SHA}}"
+      components:
+      - name: COMMIT_SHA
+        gitCommit:
+          variant: AbbrevCommitSha
+
+  artifacts:
+    - image: rosscdh/personal-di-works
+      platforms: ["linux/amd64"]
+      context: .
+      sync:
+        manual:
+          - src: ./src/**/*
+            dest: /src
+  local:
+    push: true
+
+profiles:
+- name: staging
+  build:
+    tagPolicy:
+      sha256: {}
+  deploy:
+    kustomize:
+      paths:
+      - k8s/overlays/staging

@@ -1,0 +1,16 @@
+FROM python:slim as build
+RUN pip install virtualenv
+RUN virtualenv /venv -p python3
+COPY requirements.txt .
+RUN /venv/bin/pip install -r requirements.txt
+
+FROM python:slim
+EXPOSE 8000
+ENV PATH="/venv/bin:$PATH"
+COPY --from=build /venv /venv
+WORKDIR /src
+COPY mailer.py .
+RUN adduser mailer
+USER mailer
+ENTRYPOINT ["/venv/bin/uvicorn"]
+CMD ["mailer:app", "--host", "0.0.0.0", "--port", "8000"]

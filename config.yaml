@@ -1,0 +1,72 @@
+baseURL: http://localhost:8000/
+
+languageCode: en-en
+title: Ross Crawford-d'Heureuse's website
+theme: hugo-fresh
+googleAnalytics: # Put in your tracking code without quotes like this: UA-XXXXXX...
+# Disables warnings
+disableKinds:
+- taxonomy
+- taxonomyTerm
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # Allows you to write raw html in your md files
+
+deployment:
+  order:
+    - .jpg$
+    - .gif$
+  targets:
+    - name: demo
+      cloudFrontDistributionID: E3V7CYCH9GWN08
+      url: s3://eg-dev-demo-origin?region=ap-southeast-2
+  matchers:
+    - pattern: ^.+\.(js|css|svg|ttf)$
+      cacheControl: 'max-age=31536000, no-transform, public'
+      gzip: true
+    - pattern: ^.+\.(png|jpg)$
+      cacheControl: 'max-age=31536000, no-transform, public'
+      gzip: false
+    - pattern: ^sitemap\.xml$
+      contentType: application/xml
+      gzip: true
+    - pattern: ^.+\.(html|xml|json)$
+      gzip: true
+
+defaultContentLanguage: en
+languages:
+  en:
+    title: Ross Crawford-d'Heureuse's website
+    weight: 1
+    params:
+      # Open graph allows easy social sharing. If you don't want it you can set it to false or just delete the variable
+      openGraph: true
+      # Used as meta data; describe your site to make Google Bots happy
+      description: saas saltstack ansible python kubernetes docker development engineer devops sre operations
+      navbarlogo:
+      # Logo (from static/images/logos/___)
+        image: di-works-logo.png
+        link: /
+      font:
+        name: "Open Sans"
+        sizes: [400,600]
+      hero:
+        # Main hero title
+        title: Ross Crawford-d'Heureuse's website
+        # Hero subtitle (optional)
+        subtitle: Digital intelligence
+        # Button text
+        buttontext: Get Started
+        # Where the main hero button links to
+        buttonlink: "#your-infrastructure"
+        # Hero image (from static/images/___)
+        image: illustrations/worker.svg
+        # Footer logos (from static/images/logos/clients/___.svg)
+        clientlogos: []
+      # Customizable navbar. For a dropdown, add a "sublinks" list.
+      navbar: []
+      footer:
+        socialmedia:
+        - link: https://github.com/rosscdh
+        bulmalogo: false
