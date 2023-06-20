@@ -5,5 +5,5 @@ ADD . .
 RUN hugo
 
 FROM caddy:alpine
-COPY --from=build /site/public /var/www/hypercare
+COPY --from=build /site/public /var/www/web
 ADD Caddyfile /etc/caddy/Caddyfile

@@ -2,6 +2,6 @@
 
 encode gzip zstd
 
-root * /var/www/hypercare
+root * /var/www/web
 
 file_server
