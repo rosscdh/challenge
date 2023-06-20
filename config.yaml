@@ -14,13 +14,13 @@ markup:
       unsafe: true # Allows you to write raw html in your md files
 
 deployment:
-  order:
-    - .jpg$
-    - .gif$
   targets:
     - name: demo
       cloudFrontDistributionID: E3V7CYCH9GWN08
       url: s3://eg-dev-demo-origin?region=ap-southeast-2
+  order:
+    - .jpg$
+    - .gif$
   matchers:
     - pattern: ^.+\.(js|css|svg|ttf)$
       cacheControl: 'max-age=31536000, no-transform, public'
