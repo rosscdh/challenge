@@ -28,6 +28,8 @@ make deploy                         # deploy to the configured s3 bucket and flu
 5. you can then setup a `gitlab-ci.yml` or `Jenkinsfile` or whatever `ci` tool you use to build, and can then trigger whatever `cd` tooling is in use (argocd,harness,spinnacker,etc)
 6. as noted in the `providers.tf` state must ALWAYS be stored in a remote s3 bucket thats encrypted at rest, however for the purposes of this demo an exception is made.
 7. I would normally also automate the CDN_ID and BUCKET_NAME in the `config.yaml` by using `jq` to parse the terraform outputs and `sed` to replace values in `config.yaml:deployment.targets[0]`
+8. I have added trivy and terraform validate as basic sanity checks, but would also add a degree of governance using `conftest` (OPA) or similar
+
 
 ## Rationale and Other options
 
